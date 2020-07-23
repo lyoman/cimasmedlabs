@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+<head>
+    <title>{{ username }}|{% block title %} Patient|Dashboard {% endblock %}</title>
+
+
+    {% load staticfiles %}
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
+
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!--external stylesheets-->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/patient.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <!--<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> 
+    <link href="{% static 'css/bootstrap-theme.min.css' %}" rel="stylesheet">-->
+
+</head>
+
+<body class="app">
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <script type="8a59f832a6944b345b3bc4ec-text/javascript">
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.classList.add('fadeOut');
+            }, 300);
+        });
+    </script>
+
+    <div id="container">
+        <div class="sidebar">
+            <div class="sidebar-inner">
+                <div class="sidebar-logo">
+                    <div class="peers ai-c fxw-nw">
+                        <div class="peer peer-greed">
+                            <a class="sidebar-link td-n" href="{% url 'patient:patient_dashboard' %}" class="td-n">
+                                <div class="peers ai-c fxw-nw">
+                                    <div class="peer">
+                                        <div class="logo">
+                                            <img src="{% static 'img/logo.png' %}" alt="logo">
+                                        </div>
+                                    </div>
+                                    <div class="peer peer-greed">
+                                        <h5 class="lh-1 mB-0 logo-text">Cimas MedLabs</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="peer">
+                            <div class="mobile-toggle sidebar-toggle">
+                                <a href="#" class="td-n"><i class="ti-arrow-circle-left"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="sidebar-menu scrollable pos-r">
+                    <li class="nav-item mT-30 {% block home_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'patient:patient_dashboard' %}" default>
+                            <span class="icon-holder">
+                                    <i class="c-blue-500 ti-home"></i> 
+                                </span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="sidebar-link" href="#">
+                            <span class="icon-holder">
+                                    <i class="c-brown-500 ti-email"></i> 
+                                </span>
+                            <span class="title">View Doctor</span></a>
+                    </li>
+                    <li class="nav-item {% block medicine_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'patient:patient_dashboard' %}">
+                            <span class="icon-holder">
+                                        <i class="c-indigo-500 ti-share"></i> 
+                                    </span>
+                            <span class="title">View Test Results</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item {% block help_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'patient:patient_dashboard' %}">
+                            <span class="icon-holder">
+                                        <i class="c-indigo-500 ti-bar-chart"></i> 
+                                    </span>
+                            <span class="title">Help</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item {% block chat_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'users:about' %}">
+                            <span class="icon-holder">
+                                        <i class="c-deep-purple-500 ti-comment-alt"></i> 
+                                    </span>
+                            <span class="title">About Us</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {% block charts_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'users:contact' %}">
+                            <span class="icon-holder">
+                                        <i class="c-indigo-500 ti-bar-chart"></i> 
+                                    </span>
+                            <span class="title">Contact Us</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item {% block profile_active %}{% endblock %}">
+                        <a class="sidebar-link" href="#">
+                            <span class="icon-holder">
+                                        <i class="c-indigo-500 ti-bar-chart"></i> 
+                                    </span>
+                            <span class="title">User Profile</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item {% block developers_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'users:logout' %}">
+                            <span class="icon-holder">
+                                            <i class="c-indigo-500 ti-bar-chart"></i> 
+                                        </span>
+                            <span class="title">Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Page container -->
+        <!-- Nav Bar -->
+
+        <div class="page-container">
+            <div class="header navbar">
+                <div class="header-container">
+                    <ul class="nav-left">
+                        <li>
+                            <a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);">
+                                <i class="ti-menu" style="color: white;"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url 'patient:patient_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                                <div class="peer">
+                                    <i class="ti-briefcase pR-10" style="color: white;"></i>
+                                    <span class="fsz-sm fw-600 white" style="color: white;">Test Results</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                                <div class="peer">
+                                    <i class="ti-gift pR-10" style="color: white;"></i>
+                                    <span class="fsz-sm fw-600 white" style="color: white;">Doctors</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <li class="dropdown">
+
+                        <ul class="nav-right">
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-toggle="dropdown">
+                                    <div class="peer">
+                                        <i class="ti-user pR-10" style="color: white;"></i>
+                                        <span class="fsz-sm fw-600 white" style="color: white;">{{ username }}</span>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu fsz-sm">
+                                    <li>
+                                        <a href="#" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                                            <i class="ti-settings mR-10"></i>
+                                            <span>Setting</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                                            <i class="ti-user mR-10"></i>
+                                            <span>Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                                            <i class="ti-email mR-10"></i>
+                                            <span>Messages</span>
+                                        </a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a href="{% url 'users:logout' %}" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
+                                            <i class="ti-power-off mR-10"></i>
+                                            <span class="fsz-sm fw-600 c-grey-900">Logout</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+            </div>
+
+            {% block body %} {% endblock %}
+
+            <!-- <div style="padding: 20%;"></div> -->
+
+            <div style="height: 500px;"></div>
+
+
+            <footer class="footer bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
+                <span>Copyright © 2020 Designed by 
+                <a href="#" target="_blank" title="Colorlib">Munyaradzi Dobbie</a>
+                . All rights reserved.
+            </span>
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13" type="8a59f832a6944b345b3bc4ec-text/javascript"></script>
+                <script type="8a59f832a6944b345b3bc4ec-text/javascript">
+                    window.dataLayer = window.dataLayer || [];
+
+                    function gtag() {
+                        dataLayer.push(arguments);
+                    }
+                    gtag('js', new Date());
+
+                    gtag('config', 'UA-23581568-13');
+                </script>
+
+            </footer>
+        </div>
+    </div>
+
+    <script type="8a59f832a6944b345b3bc4ec-text/javascript" src="{% static 'js/vendor.js' %}"></script>
+    <script type="8a59f832a6944b345b3bc4ec-text/javascript" src="{% static 'js/bundle.js' %}"></script>
+    <script src="{% static 'ajax.cloudflare.com/cdn-cgi/scripts/a2bd7673/cloudflare-static/rocket-loader.min.js' %}" data-cf-settings="8a59f832a6944b345b3bc4ec-|49" defer=""></script>
+
+</body>
+
+</html>

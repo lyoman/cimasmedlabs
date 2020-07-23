@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %}Login|Cimas MedLabs{% endblock %} {% block login_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+<!--Start Contents-->
+<main class="main-content bgc-grey-100">
+    <div id="mainContent">
+        <div class="full-container">
+            <div class="email-app">
+
+                <div class="form-style-8" style="padding-top:2%;">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <h2 style="text-align:center;">Cimas MedLabs Login</h2>
+
+                            <form action="." method="post">
+                                {% csrf_token %} {{ form.as_p}}
+                                <div class="d-sm-flex justify-content-between">
+                                    <div class="form-check col-md-6 text-sm-left text-center">
+                                        <!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">Remember me</label>-->
+                                    </div>
+                                    <div class="form-check-label">
+                                        <a href="{% url 'users:password_reset' %}">forgot password?</a>
+                                    </div>
+                                </div>
+
+                                <div style="padding-bottom:10px;">
+                                    <input type="submit" value="Login" class="btn btn-primary btn-block error-w3l-btn mt-sm-5 mt-3 px-4" />
+                                    <input type="hidden" name="next" value="{{ next }}" />
+                                </div>
+                            </form>
+
+                            <div class="border-top pt-3">
+                                <small class="text-muted">New to Cimas MedLabs? <a class="ml-2" href="{% url 'users:registration_redirect' %}">Sign Up now>></a></small>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<!--End Contents-->
+{% endblock %}

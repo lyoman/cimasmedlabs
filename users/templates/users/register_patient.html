@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Patient|Registration{% endblock %} {% block register_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+<!--Start Contents-->
+<main class="main-content bgc-grey-100">
+    <div id="mainContent">
+        <div class="full-container">
+            <div class="email-app">
+                {% if form.errors %} {% for field in form %} {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %} {% endif %}
+
+                <div class="form-style-8">
+                    <h1 style="color: #2196f3;padding-top: 2%;">Patient Registration</h1><br>
+                    <form method="POST">
+                        {% csrf_token %} {{ form.as_p }}
+                        <button id="save" style="color: antiquewhite;background-color: #2196f3;" type="submit">Register</button>
+                    </form>
+                    <div class="border-top pt-3">
+                        <small class="text-muted">Already Have An Account? <a class="ml-2" href="{% url 'users:login' %}">Sign In>></a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!--End Contents-->
+{% endblock %}

@@ -1,0 +1,159 @@
+.form-style-8 label {
+    font-size: 16px;
+    color: black;
+}
+
+.form-style-8 input {
+    border-radius: 6px;
+    width: 100%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.form-style-8 {
+    width: 70%;
+}
+
+h2,
+h1 {
+    color: #2196f3;
+}
+
+.form1-style-8 label {
+    font-size: 17px;
+    color: black;
+    width: 70%;
+}
+
+.form1-style-8 #update {
+    border-radius: 6px;
+    width: 25%;
+    padding: 10px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 13px;
+    float: right;
+    margin-right: 5%;
+}
+
+.form1-style-8 input {
+    border-radius: 6px;
+    width: 25%;
+    padding: 3px 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    /* margin-left: 40%; */
+}
+
+.form1-style-8 {
+    width: 67%;
+}
+
+#buzi:hover {
+    background-color: rgb(5, 145, 238);
+    color: white;
+}
+
+.border-top small {
+    font-size: 15px;
+}
+
+.border-top a {
+    font-size: 15px;
+}
+
+#pharmacy,
+#save,
+#clinic,
+#chemist {
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    padding: 15px 32px;
+    text-align: left;
+    display: inline-block;
+    /* background-color: green; */
+    /* color: white; */
+}
+
+#save:hover {
+    background-color: rgb(5, 238, 13);
+    color: white;
+}
+
+#save {
+    background-color: green;
+    /* color: white; */
+}
+
+#pharmacy:hover {
+    background-color: rgb(5, 238, 13);
+    color: white;
+}
+
+#clinic:hover {
+    background-color: rgb(5, 238, 13);
+    color: white;
+}
+
+#chemist:hover {
+    background-color: rgb(5, 238, 13);
+    color: white;
+}
+
+#pharmacy {
+    background-color: green;
+    /* color: white; */
+}
+
+#chemist {
+    background-color: orange;
+    /* color: white; */
+}
+
+#clinic {
+    background-color: rgb(20, 158, 233);
+    /* color: white; */
+}
+
+.full-container {
+    padding-left: 5%;
+}
+
+#header {
+    font-weight: bold;
+    color: black;
+    padding-left: 1%;
+}
+
+
+/* #container {
+    height: 1000px;
+} */
+
+#mapframe {
+    /* width: 1000px; */
+    width: 100%;
+    height: 400px;
+}
+
+#pinput input {
+    border-radius: 6px;
+    /* border-radius: 25px; */
+    width: 100%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+#savep {
+    border-radius: 6px;
+    width: 25%;
+    padding: 10px 5px;
+    margin: 8px 2px;
+    box-sizing: border-box;
+    font-size: 13px;
+    float: right;
+    /* display: inline; */
+}
