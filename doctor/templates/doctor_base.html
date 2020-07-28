@@ -15,7 +15,7 @@
 
     <!--external stylesheets-->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/doctor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pharmacy.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -26,6 +26,7 @@
 </head>
 
 <body class="app">
+    <link rel="stylesheet" href="{% static 'css/special.css' %}">
     <div id="loader">
         <div class="spinner"></div>
     </div>
@@ -53,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="peer peer-greed">
-                                        <h5 class="lh-1 mB-0 logo-text">Cimas MedLabs</h5>
+                                        <h3 class="lh-1 mB-0 logo-text">Cimas MedLabs</h3>
                                     </div>
                                 </div>
                             </a>
@@ -74,22 +75,24 @@
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
+                    {% for doctor in doctor %}
                     <li class="nav-item">
-                        <a class="sidebar-link" href="#">
+                        <a class="sidebar-link" href="{% url 'doctor:patients_home' doctor.id %}">
                             <span class="icon-holder">
                                     <i class="c-brown-500 ti-email"></i> 
                                 </span>
                             <span class="title">View Patients</span></a>
                     </li>
+                    {% endfor %} {% for doctor in doctor %}
                     <li class="nav-item {% block medicine_active %}{% endblock %}">
-                        <a class="sidebar-link" href="{% url 'doctor:doctor_dashboard' %}">
+                        <a class="sidebar-link" href="{% url 'doctor:specimen_home' doctor.id %}">
                             <span class="icon-holder">
                                         <i class="c-indigo-500 ti-share"></i> 
                                     </span>
                             <span class="title">View Test Results</span>
                         </a>
                     </li>
-
+                    {% endfor %}
 
                     <li class="nav-item {% block help_active %}{% endblock %}">
                         <a class="sidebar-link" href="{% url 'doctor:doctor_dashboard' %}">
@@ -152,22 +155,25 @@
                                 <i class="ti-menu" style="color: white;"></i>
                             </a>
                         </li>
+                        {% for doctor in doctor %}
                         <li class="dropdown">
-                            <a href="{% url 'doctor:doctor_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                            <a href="{% url 'doctor:specimen_home' doctor.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-briefcase pR-10" style="color: white;"></i>
                                     <span class="fsz-sm fw-600 white" style="color: white;">View Requests</span>
                                 </div>
                             </a>
                         </li>
+
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                            <a href="{% url 'doctor:patients_home' doctor.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-gift pR-10" style="color: white;"></i>
                                     <span class="fsz-sm fw-600 white" style="color: white;">Patients</span>
                                 </div>
                             </a>
                         </li>
+                        {% endfor %}
                     </ul>
                     <li class="dropdown">
 

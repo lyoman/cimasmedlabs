@@ -157,3 +157,14 @@ h1 {
     float: right;
     /* display: inline; */
 }
+
+.image .pic-labels {
+    /* color: black; */
+    font-size: x-large;
+    padding: 10%;
+}
+
+.fsz-sm {
+    font-size: 13.92px!important;
+    font-size: xx-large;
+}

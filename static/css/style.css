@@ -1823,3 +1823,12 @@ a.fc-more:hover {
 .fc-unthemed .fc-list-empty {
     background-color: #eee
 }
+
+.peer span .white {
+    font-size: larger;
+}
+
+.fsz-sm {
+    font-size: 13.92px!important;
+    font-size: xx-large;
+}

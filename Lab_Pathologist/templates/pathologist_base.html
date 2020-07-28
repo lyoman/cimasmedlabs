@@ -10,22 +10,23 @@
     {% load staticfiles %}
 
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
-
+    <link rel="stylesheet" href="{% static 'css/special.css' %}">
     <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
 
     <!--external stylesheets-->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/Lab_Pathologist.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pharmacy.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
     <!--<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"> 
     <link href="{% static 'css/bootstrap-theme.min.css' %}" rel="stylesheet">-->
-
+    <link rel="stylesheet" href="{% static 'css/special.css' %}">
 </head>
 
 <body class="app">
+    <link rel="stylesheet" href="{% static 'css/special.css' %}">
     <div id="loader">
         <div class="spinner"></div>
     </div>
@@ -45,7 +46,7 @@
                 <div class="sidebar-logo">
                     <div class="peers ai-c fxw-nw">
                         <div class="peer peer-greed">
-                            <a class="sidebar-link td-n" href="{% url 'Lab_Pathologist:pathologist_dashboard' %}" class="td-n">
+                            <a class="sidebar-link td-n" href="{% url 'pathologist:pathologist_dashboard' %}" class="td-n">
                                 <div class="peers ai-c fxw-nw">
                                     <div class="peer">
                                         <div class="logo">
@@ -53,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="peer peer-greed">
-                                        <h5 class="lh-1 mB-0 logo-text">Cimas MedLabs</h5>
+                                        <h3 class="lh-1 mB-0 logo-text">Cimas MedLabs</h3>
                                     </div>
                                 </div>
                             </a>
@@ -67,7 +68,7 @@
                 </div>
                 <ul class="sidebar-menu scrollable pos-r">
                     <li class="nav-item mT-30 {% block home_active %}{% endblock %}">
-                        <a class="sidebar-link" href="{% url 'Lab_Pathologist:pathologist_dashboard' %}" default>
+                        <a class="sidebar-link" href="{% url 'pathologist:pathologist_dashboard' %}" default>
                             <span class="icon-holder">
                                     <i class="c-blue-500 ti-home"></i> 
                                 </span>
@@ -79,24 +80,24 @@
                             <span class="icon-holder">
                                     <i class="c-brown-500 ti-email"></i> 
                                 </span>
-                            <span class="title">View Doctor</span></a>
+                            <span class="title">Samples</span></a>
                     </li>
                     <li class="nav-item {% block medicine_active %}{% endblock %}">
-                        <a class="sidebar-link" href="{% url 'Lab_Pathologist:pathologist_dashboard' %}">
+                        <a class="sidebar-link" href="{% url 'pathologist:pathologist_dashboard' %}">
                             <span class="icon-holder">
                                         <i class="c-indigo-500 ti-share"></i> 
                                     </span>
-                            <span class="title">View Test Results</span>
+                            <span class="title">Reports</span>
                         </a>
                     </li>
 
 
                     <li class="nav-item {% block help_active %}{% endblock %}">
-                        <a class="sidebar-link" href="{% url 'Lab_Pathologist:pathologist_dashboard' %}">
+                        <a class="sidebar-link" href="{% url 'pathologist:pathologist_dashboard' %}">
                             <span class="icon-holder">
                                         <i class="c-indigo-500 ti-bar-chart"></i> 
                                     </span>
-                            <span class="title">Help</span>
+                            <span class="title">Manage Patient</span>
                         </a>
                     </li>
 
@@ -153,13 +154,32 @@
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="{% url 'Lab_Pathologist:pathologist_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                            <a href="{% url 'pathologist:pathologist_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-briefcase pR-10" style="color: white;"></i>
-                                    <span class="fsz-sm fw-600 white" style="color: white;">Test Results</span>
+                                    <span class="fsz-sm fw-600 white" style="color: white;">Samples</span>
                                 </div>
                             </a>
                         </li>
+
+                        <li class="dropdown">
+                            <a href="{% url 'pathologist:pathologist_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                                <div class="peer">
+                                    <i class="ti-briefcase pR-10" style="color: white;"></i>
+                                    <span class="fsz-sm fw-600 white" style="color: white;">Specimen Data</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="{% url 'pathologist:pathologist_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                                <div class="peer">
+                                    <i class="ti-briefcase pR-10" style="color: white;"></i>
+                                    <span class="fsz-sm fw-600 white" style="color: white;">Reports</span>
+                                </div>
+                            </a>
+                        </li>
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">

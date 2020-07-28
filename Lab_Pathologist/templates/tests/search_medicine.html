@@ -1,0 +1,116 @@
+{% extends "products_base.html" %} {% block title %}Search Results|Dashboard{% endblock %} {% block home_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+<!--Start Contents-->
+<main class="main-content bgc-grey-100">
+    <div id="mainContent">
+        <div class="full-container">
+            <div class="email-app">
+
+                <h3 style="text-align: center;">Medicine Search Results</h3>
+                <hr/>
+                <!-- Start Menu Grid Area -->
+                <section class="food__menu__grid__area">
+                    <div class="container">
+                        {% comment %} <div class="row mt--30"> {% endcomment %}
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+
+                                    {% if products %}
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Pharmacy</th>
+                                                    <th>Status</th>
+                                                    <th>Actions</th>
+
+                                                </tr> 
+                                            </thead>
+                                            <tbody>
+                                                
+                                                {% for product in products %}
+                                                <tr>
+                                                    <td>{{ product.product_name }}</td>
+                                                    <td>
+                                                        $ {{ product.price }}
+                                                    </td>
+                                                    <td>
+                                                        {{ product.quantity }}
+                                                    </td>
+
+                                                    <td>
+                                                            <a href="{% url 'pharmacy:pharmacy_details' product.pharmacy.id %}">
+                                                            <img src="{{ product.pharmacy.pharmacy_logo.url }}" class="img-responsive" style="width: 20px; float: left; margin-right: 10px;" />
+                                                        </a>
+                                                        <a href="{% url 'pharmacy:pharmacy_details' product.pharmacy.id %}">{{ product.pharmacy.pharmacy_name }}</a>
+                                                    </td>
+                                                    
+                                                    {% if product.active == True %}
+                                                        <td>
+                                                            Available
+                                                        </td>
+                                                    {% endif %} {% if product.active == False %}
+                                                        <td>
+                                                            Not Available
+                                                        </td>
+                                                    {% endif %}
+                                                    <td>
+                                                        {% if product.active == False %}
+
+                                                            <a href="{% url 'pharmacy:enable_product' product.id %}" style="display: inline;">
+                                                                {% csrf_token %}
+                                                                <input type="hidden" name="product_id" value="{{ product.id }}" />
+                                                                <button type="submit" class="btn btn-outline-success btn-md">
+                                                                        <span class="glyphicon glyphicon-ok"></span>&nbsp; Enable
+                                                                    </button>
+                                                            </a> {% endif %} {% if product.active == True %}
+
+                                                            <a href="{% url 'pharmacy:disable_product' product.id %}" style="display: inline;">
+                                                                {% csrf_token %}
+                                                                <input type="hidden" name="product_id" value="{{ product.id }}" />
+                                                                <button type="submit" class="btn btn-warning btn-md">
+                                                                        <span class="glyphicon glyphicon-remove"></span>&nbsp; Disable
+                                                                    </button>
+                                                            </a> {% endif %} {% if product %}
+                                                            <a href="{% url 'pharmacy:delete_product' product.id %}" style="display: inline;">
+                                                                {% csrf_token %}
+                                                                <input type="hidden" name="product_id" value="{{ product.id }}" />
+                                                                <button type="submit" class="btn btn-danger btn-md">
+                                                                    <span class="glyphicon glyphicon-trash"></span>&nbsp; Remove
+                                                                </button>
+                                                            </a> {% endif %} {% if product %}
+                                                            <a href="{% url 'pharmacy:edit_product' product.id %}" style="display: inline;">
+                                                                {% csrf_token %}
+                                                                <input type="hidden" name="product_id" value="{{ product.id }}" />
+                                                                <button type="submit" class="btn btn-primary btn-md">
+                                                                    <span class="glyphicon glyphicon-edit"></span>&nbsp; Edit info
+                                                                </button>
+                                                            </a>
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                {% else %}
+                                                    <div class="alert alert-danger">
+                                                        <strong><h3>Drug with that name could not be found</h3></strong>
+                                                    </div>
+                                    {% endif %}
+                                            </tbody>
+                                        </table>
+                                        
+
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<!--End Contents-->
+{% endblock %}

@@ -17,6 +17,8 @@ def redirect_logged (request):
         return redirect('patient:patient_dashboard')
     elif request.user.is_doctor:
         return redirect('doctor:doctor_dashboard')
+    elif request.user.is_lab_pathologist:
+        return redirect('pathologist:pathologist_dashboard')
     else:
         return redirect('users:login')
         

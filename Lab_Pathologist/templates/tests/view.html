@@ -1,0 +1,94 @@
+{% extends "tests_base.html" %} {% block title %}Patient Tests Home{% endblock %} {% block tests_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+<!--Start Contents-->
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> {{ message }}
+        </div>
+        {% endfor %} {% endif %}
+
+        <!-- <h3>All Products</h3> -->
+        <!-- <p style="display:inline-block">
+            <a type="submit" class="btn btn-md btn-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">View All</a>
+            <a type="submit" class="btn btn-md btn-outline-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">View Under Tests</a>
+            <a type="submit" class="btn btn-md btn-outline-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">With Completed Tests</a>
+        </p> -->
+
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Refference</th>
+                    <th>Doctor</th>
+                    <th>Patient Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% if tests %} {% for product in tests %}
+                <tr>
+                    <td>{{ product.refference }}</td>
+                    <td>
+                        {{ product.doctor }}
+                    </td>
+                    <td>
+                        {{ product.patient_name }}
+                    </td>
+                    <td>
+                        {{ product.email }}
+                    </td>
+                    <td>
+                        {{ product.age }}
+                    </td>
+
+                    <td>
+                        {{ product.gender }}
+                    </td>
+
+                    <td>
+                        Pending
+                    </td>
+
+                    <td>
+                        {% if product %}
+                        <a href="{% url 'pathologist:tests_home' product.id %}" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ product.id }}" />
+                                <button type="submit" style="color: white;" class="btn btn-warning btn-md">
+                                    <span class="glyphicon glyphicon-trash"></span>&nbsp; Test
+                                </button>
+                            </a> {% endif %} {% if product %}
+                        <a href="{% url 'pathologist:tests_home' product.id %}" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ product.id }}" />
+                                <button type="submit" class="btn btn-primary btn-md">
+                                    <span class="glyphicon glyphicon-edit"></span>&nbsp; Specimen
+                                </button>
+                            </a> {% endif %}
+                    </td>
+                </tr>
+                {% endfor %} {% else %}
+                <h3>You don't have any Pending Tests at the moment</h3>
+                {% endif %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<!--End Contents-->
+{% endblock %}

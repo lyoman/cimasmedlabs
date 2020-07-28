@@ -1,0 +1,86 @@
+{% extends "tests_base.html" %} {% block title %}Perform Tests{% endblock %} {% block tests_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+<!--Start Contents-->
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> {{ message }}
+        </div>
+        {% endfor %} {% endif %}
+
+        <h1 style="color: #2196f3; text-align: center;">Perform Tests</h1>
+
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if specimendata %}
+                <tr>
+                    <td>Reff No.</td>
+                    <td>{{ specimendata.reff }}</td>
+                </tr>
+
+                <tr>
+                    <td>Specimen Name</td>
+                    <td>{{ specimendata.specimen.specimen_name }}</td>
+                </tr>
+
+                <!-- <tr>
+                    <td>Hemoglobin</td>
+                    <td>{{ specimendata.specimen.hemoglobin }}</td>
+                </tr>
+
+                <tr>
+                    <td>RBC</td>
+                    <td>{{ specimendata.specimen.RBC }}</td>
+                </tr> -->
+
+                <tr>
+                    <td>Doctor</td>
+                    <td>{{ specimendata.doctor }}</td>
+                </tr>
+
+                <tr>
+                    <td>Patient Code</td>
+                    <td>P00{{ specimendata.patient.id }}</td>
+                </tr>
+
+                <tr>
+                    <td>Gender</td>
+                    <td>{{ specimendata.specimen.gender }}</td>
+                </tr>
+
+                <tr>
+                    <td>Age</td>
+                    <td>{{ specimendata.specimen.age }}</td>
+                </tr>
+
+                <tr>
+                    <td>Date Time</td>
+                    <td>{{ specimendata.timestamp }}</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <label>Enter Random Variable</label>
+        <input type="number" name="blood" />
+        <button type="submit" name="submit" class="btn btn-lg btn-primary">Save</button>
+
+    </div>
+</div>
+
+
+<!--End Contents-->
+{% endblock %}

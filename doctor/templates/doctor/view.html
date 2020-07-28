@@ -5,7 +5,7 @@
         <div class="full-container">
             <div class="email-app">
 
-                <h3 style="margin-top: 40px; text-align: center;color: #2196f3;">Welcome Doctor {{ username }}</h3>
+                <h1 style="margin-top: 40px; text-align: center;color: #2196f3;">Welcome Doctor {{ username }}</h1>
                 <hr/>
                 <!-- Start Menu Grid Area -->
                 <section class="food__menu__grid__area" style="padding-top: 30px; padding-bottom: 30px">
@@ -14,42 +14,79 @@
                             {% for doctor in doctor %}
                             <!-- Start Single Menu Item -->
                             <div class="col-lg-4 col-sm-12 col-md-6" style="padding-bottom: 60px">
-                                <div class="menu__grid__item wow fadeInUp">
-                                    <div class="menu__grid__thumb">
-
-                                    </div>
-                                    <div class="menu__grid__inner">
-                                        <div class="menu__grid__details">
-                                            <h3>
-                                                Hello
-                                            </h3>
-                                            <ul class="grid__prize__list">
-                                                <li>
-                                                    <h4>{{doctor.username}}</h4>
-                                                </li>
-
-                                                <li>
-                                                    <h4>{{doctor.email}}</h4>
-                                                </li>
-                                            </ul>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="image form-group1">
+                                                        <a href="{% url 'doctor:patients_home' doctor.id %}">
+                                                            <img src="{% static 'imgs/blood.png' %}" class="img img-responsive">
+                                                            <label class="pic-labels">Samples</label>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="grid__addto__cart__btn">
-                                            <h3><span><a class="btn btn-danger " href="#">more info</a></span></h3>
-                                            <!-- <h3><span><a class="btn btn-danger" href="">view catalogue</a></span></h3> -->
 
+                                        <div class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="image form-group1">
+                                                        <a href="{% url 'doctor:patients_home' doctor.id %}">
+                                                            <img src="{% static 'imgs/report.png' %}" class="img img-responsive">
+                                                            <label class="pic-labels">Reports</label>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- End Single Menu Item -->
-                            {% endfor %}
+
+                            <div class="col-lg-4 col-sm-12 col-md-6" style="padding-bottom: 60px">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="image form-group1">
+                                                        <a href="{% url 'doctor:specimen_home' doctor.id %}">
+                                                            <img src="{% static 'imgs/chemistry.png' %}" class="img img-responsive">
+                                                            <label class="pic-labels">Specimen</label>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <div class="image form-group1">
+                                                        <a href="{% url 'doctor:patients_home' doctor.id %}">
+                                                            <img src="{% static 'imgs/patient.png' %}" class="img img-responsive">
+                                                            <label class="pic-labels">Patients</label>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
+                        <!-- End Single Menu Item -->
+                        {% endfor %}
                     </div>
-                </section>
 
             </div>
+            </section>
+
         </div>
+    </div>
     </div>
 </main>
 
