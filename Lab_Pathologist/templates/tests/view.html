@@ -9,16 +9,7 @@
                 <span aria-hidden="true">&times;</span>
             </button> {{ message }}
         </div>
-        {% endfor %} {% endif %}
-
-        <!-- <h3>All Products</h3> -->
-        <!-- <p style="display:inline-block">
-            <a type="submit" class="btn btn-md btn-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">View All</a>
-            <a type="submit" class="btn btn-md btn-outline-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">View Under Tests</a>
-            <a type="submit" class="btn btn-md btn-outline-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">With Completed Tests</a>
-        </p> -->
-
-        {% if error_message %}
+        {% endfor %} {% endif %} {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
         {% endif %}
 

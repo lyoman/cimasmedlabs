@@ -45,15 +45,29 @@ def registration_redirect(request):
 
 def about(request):
     if request.user.is_authenticated:
-        username = request.user.username
-        return render(request,'about.html', {'username':username,})
+        if request.user.is_patient:
+            username = request.user.username
+            return render(request,'about.html', {'username':username,})
+        elif request.user.is_doctor:
+            username = request.user.username
+            return render(request,'dabout.html', {'username':username,})
+        elif request.user.is_lab_pathologist:
+            username = request.user.username
+            return render(request,'pabout.html', {'username':username,})
     else:
         return render(request,'visitor_about.html')
 
 def contact(request):
     if request.user.is_authenticated:
-        username = request.user.username
-        return render(request,'contact.html', {'username':username,})
+        if request.user.is_patient:
+            username = request.user.username
+            return render(request,'contact.html', {'username':username,})
+        elif request.user.is_doctor:
+            username = request.user.username
+            return render(request,'dcontact.html', {'username':username,})
+        elif request.user.is_lab_pathologist:
+            username = request.user.username
+            return render(request,'pcontact.html', {'username':username,})
     else:
         return render(request,'visitor_contact.html')
 

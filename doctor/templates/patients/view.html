@@ -14,8 +14,8 @@
         <!-- <h3>All Products</h3> -->
         <p style="display:inline-block">
             <a type="submit" class="btn btn-lg btn-primary" href="{% url 'doctor:patients_home' doctor.id %}">View All</a>
-            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'doctor:patients_home' doctor.id %}">View Under Tests</a>
-            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'doctor:patients_home' doctor.id %}">With Completed Tests</a>
+            <!-- <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'doctor:patients_home' doctor.id %}">View Under Tests</a>
+            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'doctor:patients_home' doctor.id %}">With Completed Tests</a> -->
         </p>
 
         {% if error_message %}
@@ -51,17 +51,17 @@
                         <a href="{% url 'doctor:patients_home' product.id %}" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="product_id" value="{{ product.id }}" />
-                                <button type="submit" class="btn btn-danger btn-md">
-                                    <span class="glyphicon glyphicon-trash"></span>&nbsp; Remove
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <span class="glyphicon glyphicon-play"></span>&nbsp; View Details
                                 </button>
-                            </a> {% endif %} {% if product %}
+                            <!-- </a> {% endif %} {% if product %}
                         <a href="{% url 'doctor:patients_home' product.id %}" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="product_id" value="{{ product.id }}" />
                                 <button type="submit" class="btn btn-primary btn-md">
                                     <span class="glyphicon glyphicon-edit"></span>&nbsp; Edit info
                                 </button>
-                            </a> {% endif %}
+                            </a> {% endif %} -->
                     </td>
                 </tr>
                 {% endfor %} {% else %}

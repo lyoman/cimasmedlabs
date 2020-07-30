@@ -3,6 +3,8 @@ from users.models import User
 from .models import Specimen
 from .forms import SpecimenForm, SpecimenDataForm
 from django.contrib.auth.decorators import login_required
+from doctor.models import SpecimenData, Doctor
+from Lab_Pathologist.models import GeneratedReport
 
 from datetime import datetime
 
@@ -16,7 +18,7 @@ from django.db.models import Q
 def patient_dashboard(request):
     username = request.user.username
     id       = request.user.id
-    patient = User.objects.filter(id=id, is_patient = True)
+    patient  = User.objects.filter(id=id, is_patient = True)
     print(patient)
 
     context = {
@@ -100,9 +102,9 @@ def delete_specimen(request, id):
 
 @login_required
 def send_specimen(request, id):
-    dt = datetime.now()
-    milliseconds = int(round(dt.timestamp() *1000))
-    print(milliseconds)
+    # dt = datetime.now()
+    # milliseconds = int(round(dt.timestamp() *1000))
+    # print(milliseconds)
     form     = SpecimenDataForm(request.POST or None, request.FILES or None)
     username = request.user.username
     specimen = get_object_or_404(Specimen, pk=id)
@@ -121,3 +123,62 @@ def send_specimen(request, id):
     specimen.save()
     messages.success(request,"Specimen has been successfully sent to the Doctor !!!")
     return redirect('patient:specimen_home', patient.id)
+
+@login_required
+def doctor_home(request,id):
+    patient    = get_object_or_404(User, pk=id)
+    doctors    = Doctor.objects.all()
+    username   = request.user.username
+
+    context     = {
+        "patient"    : patient,
+        "doctors"    : doctors,
+        "username"   : username,
+    }
+    return render(request,'padoctors/view.html', context)
+
+
+@login_required
+def doctors_details(request, id):
+    docdata     = get_object_or_404(Doctor, pk=id)
+    username    = request.user.username
+    patient     = request.user
+    print(patient)
+
+    context     = {
+        "patient"      : patient,
+        "docdata"      : docdata,
+        "username"     : username,
+    }
+    return render(request,'padoctors/doctor_details.html', context)
+
+@login_required
+def report_home(request, id):
+    specimendata    = SpecimenData.objects.filter(patient=request.user)
+    specimendata    = specimendata[0]
+    print(specimendata)
+    reportdata      = GeneratedReport.objects.filter(specimendata=specimendata)
+    username        = request.user.username
+    patient         = get_object_or_404(User, pk=id)
+    print(reportdata)
+    context     = {
+        "reportdata"    : reportdata,
+        "username"      : username,
+        "patient"       : patient,
+    }
+    return render(request,'preport/view.html', context)
+
+
+@login_required
+def report_details(request, id):
+    reportdata      = get_object_or_404(GeneratedReport, pk=id)
+    username        = request.user.username
+    patient         = request.user
+    print(reportdata)
+
+    context     = {
+        "reportdata"    : reportdata,
+        "username"      : username,
+        "patient"       : patient,
+    }
+    return render(request,'preport/preport_details.html', context)

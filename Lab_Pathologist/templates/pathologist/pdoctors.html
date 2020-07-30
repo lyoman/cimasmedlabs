@@ -1,0 +1,70 @@
+{% extends "pdoctors_base.html" %} {% block title %}Doctors Home{% endblock %} {% block doctor_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+<!--Start Contents-->
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> {{ message }}
+        </div>
+        {% endfor %} {% endif %}
+
+        <h1 style="color: #2196f3;text-align: center;">All Doctors</h1>
+
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Qualification</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% if doctors %} {% for product in doctors %}
+                <tr>
+                    <td>{{ product.doctor_name }}</td>
+                    <td>
+                        {{ product.qualification }}
+                    </td>
+                    <td>
+                        {{ product.gender }}
+                    </td>
+                    <td>
+                        {{ product.email }}
+                    </td>
+                    <td>
+                        {{ product.age }}
+                    </td>
+                    <td>
+                        {% if product %}
+                        <a href="{% url 'pathologist:pdoctors_details' product.id %}" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ product.id }}" />
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <span class="glyphicon glyphicon-play"></span>&nbsp; View Details
+                                </button>
+                            </a> {% endif %}
+                    </td>
+                </tr>
+                {% endfor %} {% else %}
+                <h3>There are no doctors at the moment</h3>
+                {% endif %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<!--End Contents-->
+{% endblock %}

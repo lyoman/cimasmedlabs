@@ -74,11 +74,19 @@
                         </a>
                     </li>
 
-                    <li class="nav-item {% block compose_active %}{% endblock %}">
-                        <a class="sidebar-link" href="{% url 'patient:specimen_home' patient.id %}">
+                    <li class="nav-item {% block report_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'patient:report_home' patient.id %}">
                             <span class="icon-holder">
                                         <i class="c-blue-500 ti-share"></i> 
                                     </span><span class="title">Reports</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item {% block doctor_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'patient:doctor_home' patient.id %}">
+                            <span class="icon-holder">
+                                        <i class="c-blue-500 ti-share"></i> 
+                                    </span><span class="title">Doctor</span>
                         </a>
                     </li>
 
@@ -91,7 +99,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item {% block chat_activ %}{% endblock %}">
+                    <li class="nav-item {% block about_active %}{% endblock %}">
                         <a class="sidebar-link" href="{% url 'users:about' %}">
                             <span class="icon-holder">
                                         <i class="c-deep-purple-500 ti-comment-alt"></i> 
@@ -99,21 +107,12 @@
                             <span class="title">About Us</span>
                         </a>
                     </li>
-                    <li class="nav-item {% block charts_tive %}{% endblock %}">
+                    <li class="nav-item {% block contact_active %}{% endblock %}">
                         <a class="sidebar-link" href="{% url 'users:contact' %}">
                             <span class="icon-holder">
                                         <i class="c-indigo-500 ti-bar-chart"></i> 
                                     </span>
                             <span class="title">Contact Us</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item {% block clients_active %}{% endblock %}">
-                        <a class="sidebar-link" href="#">
-                            <span class="icon-holder">
-                                        <i class="c-indigo-500 ti-bar-chart"></i> 
-                                    </span>
-                            <span class="title">User Profile</span>
                         </a>
                     </li>
 
@@ -142,7 +141,15 @@
                             </a>
                         </li>
                         <li class="dropdown">
-                            <a href="{% url 'patient:specimen_home' patient.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                            <a href="{% url 'patient:patient_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                                <div class="peer">
+                                    <i class="ti-briefcase pR-10" style="color: white;"></i>
+                                    <span class="fsz-sm fw-600 white" style="color: white;">Dashboard</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url 'patient:doctor_home' patient.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-gift pR-10" style="color: white;"></i>
                                     <span class="fsz-sm fw-600 white" style="color: white;">View Doctor</span>
@@ -151,11 +158,19 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="{% url 'patient:specimen_home' patient.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                            <a href="{% url 'patient:report_home' patient.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-world pR-10" style="color: white;"></i>
-                                    <!--<span class="fsz-sm fw-600 c-grey-900">Remove Medicine</span>-->
                                     <span class="fsz-sm fw-600 white" style="color: white;">View Reports</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="{% url 'patient:specimen_home' patient.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                                <div class="peer">
+                                    <i class="ti-gift pR-10" style="color: white;"></i>
+                                    <span class="fsz-sm fw-600 white" style="color: white;">View Specimen</span>
                                 </div>
                             </a>
                         </li>
@@ -164,7 +179,6 @@
                             <a href="{% url 'patient:add_specimen' patient.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-world pR-10" style="color: white;"></i>
-                                    <!--<span class="fsz-sm fw-600 c-grey-900">View Medicine</span>-->
                                     <span class="fsz-sm fw-600 white" style="color: white;">Add Specimen</span>
                                 </div>
                             </a>

@@ -13,8 +13,8 @@
 
         <!-- <h3>All Products</h3> -->
         <p style="display:inline-block">
-            <a type="submit" class="btn btn-lg btn-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">View All</a>
-            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">With Completed Tests</a>
+            <a type="submit" class="btn btn-lg btn-primary" href="{% url 'pathologist:specimen_home' pathologist.id %}">View All</a>
+            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'pathologist:specimen_home1' pathologist.id %}">With Completed Tests</a>
         </p>
 
         {% if error_message %}
@@ -59,7 +59,7 @@
                     </td>
 
                     <td>
-                        {% if product %}
+                        {% if product.status == "pending" %}
                         <a href="{% url 'pathologist:perform_test' product.id %}" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="product_id" value="{{ product.id }}" />

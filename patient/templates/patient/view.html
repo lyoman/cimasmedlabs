@@ -20,8 +20,8 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
                                                     <div class="image form-group">
-                                                        <a href="{% url 'patient:patient_dashboard' %}">
-                                                            <img src="{% static 'imgs/blood.png' %}" class="img img-responsive">
+                                                        <a href="{% url 'patient:doctor_home' patient.id %}">
+                                                            <img src="{% static 'imgs/doctor.png' %}" class="img img-responsive">
                                                             <label class="pic-labels">Doctor</label>
                                                         </a>
                                                     </div>
@@ -33,7 +33,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
                                                     <div class="image form-group">
-                                                        <a href="{% url 'patient:patient_dashboard' %}">
+                                                        <a href="{% url 'patient:report_home' patient.id %}">
                                                             <img src="{% static 'imgs/report.png' %}" class="img img-responsive">
                                                             <label class="pic-labels">Reports</label>
                                                         </a>
@@ -65,7 +65,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
                                                     <div class="image form-group">
-                                                        <a href="{% url 'patient:patient_dashboard' %}">
+                                                        <a href="{% url 'patient:specimen_home' patient.id %}">
                                                             <img src="{% static 'imgs/patient.png' %}" class="img img-responsive">
                                                             <label class="pic-labels">Profile</label>
                                                         </a>

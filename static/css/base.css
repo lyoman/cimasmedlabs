@@ -87,11 +87,12 @@ main {
     height: 10%;
 }
 
-.form-group label {
+
+/* .form-group label {
     color: #2196f3;
-    font-size: medium;
+    font-size: larger; 
     width: 100%;
-}
+} */
 
 h2,
 h1 {

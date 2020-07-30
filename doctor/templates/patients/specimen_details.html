@@ -1,4 +1,4 @@
-{% extends "patients_base.html" %} {% block title %}Specimen Details{% endblock %} {% block specimendata_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+{% extends "dspecimen_base.html" %} {% block title %}Specimen Details{% endblock %} {% block specimen_active %}active{% endblock %} {% load staticfiles %} {% block body %}
 <!--Start Contents-->
 <div class="panel panel-default">
     <div class="panel-body">
@@ -9,7 +9,43 @@
                 <span aria-hidden="true">&times;</span>
             </button> {{ message }}
         </div>
+        {% endfor %} {% endif %} {% if specimendata.pathologist == "no" %} {% if form.errors %} {% for field in form %} {% for error in field.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %} {% endfor %} {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %} {% endif %} {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> {{ message }}
+        </div>
         {% endfor %} {% endif %}
+
+        <h1 style="text-align: center;color: #2196f3;width: 60%;">Enter Temperature and Weight</h1><br> {% if error_message %}
+        <p><strong> error_message </strong></p>
+        {% endif %}
+        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data" style="width: 60%;">
+            {% csrf_token %} {% for field in form %}
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <span class="text-danger small">{{ field.errors }}</span>
+                </div>
+
+                <label id="pname" class="control-label col-sm-4" for="product_name" style="font-size: larger;">{{ field.label_tag }}</label>
+                <div class="col-sm-8" id="pinput">{{ field }}</div>
+            </div>
+            {% endfor %}
+            <button id="savep" type="reset" class="btn btn-outline-danger btn-md">Cancel</button>
+            <button id="savep" class="btn btn-outline-success btn-md">Send</button>
+        </form>
+        <div style="padding-top: 10%;"></div>
+        {% endif %}
+
+
 
         <h1 style="text-align: center;color: #2196f3;">Specimen for Patient P00{{ specimendata.patient.id }}</h1>
         {% if error_message %}
@@ -32,21 +68,6 @@
                 </tr>
 
                 <tr>
-                    <td>Specimen Name</td>
-                    <td>{{ specimendata.specimen.specimen_name }}</td>
-                </tr>
-
-                <tr>
-                    <td>Hemoglobin</td>
-                    <td>{{ specimendata.specimen.hemoglobin }}</td>
-                </tr>
-
-                <tr>
-                    <td>RBC</td>
-                    <td>{{ specimendata.specimen.RBC }}</td>
-                </tr>
-
-                <tr>
                     <td>Doctor</td>
                     <td>{{ specimendata.doctor }}</td>
                 </tr>
@@ -65,6 +86,18 @@
                     <td>Age</td>
                     <td>{{ specimendata.specimen.age }}</td>
                 </tr>
+
+                {% if specimendata.temperature %}
+                <tr>
+                    <td>Temperature</td>
+                    <td>{{ specimendata.temperature }} Degrees Celsius</td>
+                </tr>
+                {% endif %} {% if specimendata.weight %}
+                <tr>
+                    <td>Weight</td>
+                    <td>{{ specimendata.weight }} Kgs</td>
+                </tr>
+                {% endif %}
 
                 <tr>
                     <td>Sent to Pathologist</td>

@@ -32,15 +32,15 @@
                 </tr>
 
                 <tr>
-                    <td>Specimen Name</td>
-                    <td>{{ specimendata.specimen.specimen_name }}</td>
+                    <td>Temperature</td>
+                    <td>{{ specimendata.temperature }} °C</td>
                 </tr>
 
-                <!-- <tr>
-                    <td>Hemoglobin</td>
-                    <td>{{ specimendata.specimen.hemoglobin }}</td>
+                <tr>
+                    <td>Weight</td>
+                    <td>{{ specimendata.weight }} Kgs</td>
                 </tr>
-
+                <!--
                 <tr>
                     <td>RBC</td>
                     <td>{{ specimendata.specimen.RBC }}</td>
@@ -74,10 +74,15 @@
             </tbody>
         </table>
 
-        <label>Enter Random Variable</label>
-        <input type="number" name="blood" />
-        <button type="submit" name="submit" class="btn btn-lg btn-primary">Save</button>
-
+        {% if specimendata.status == "pending" %}
+        <!-- <button type="submit" name="submit" class="btn btn-lg btn-primary">Perform Test</button> -->
+        <a href="{% url 'pathologist:generate_report' specimendata.id %}" style="display: inline;margin-left: 40%;">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ specimendata.id }}" />
+            <button type="submit" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-save"></span>&nbsp; Perform Test
+            </button>
+        </a> {% endif %}
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-{% extends "patients_base.html" %} {% block title %}Patients Home{% endblock %} {% block product_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+{% extends "ppatients_base.html" %} {% block title %}Patients Home{% endblock %} {% block product_active %}active{% endblock %} {% load staticfiles %} {% block body %}
 <!--Start Contents-->
 <div class="panel panel-default">
     <div class="panel-body">
@@ -13,9 +13,9 @@
 
         <!-- <h3>All Products</h3> -->
         <p style="display:inline-block">
-            <a type="submit" class="btn btn-lg btn-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">View All</a>
-            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">View Under Tests</a>
-            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'pathologist:patients_home' pathologist.id %}">With Completed Tests</a>
+            <a type="submit" class="btn btn-lg btn-primary" href="{% url 'pathologist:ppatients_home' pathologist.id %}">View All</a>
+            <!-- <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'pathologist:ppatients_home' pathologist.id %}">View Under Tests</a>
+            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'pathologist:ppatients_home' pathologist.id %}">With Completed Tests</a> -->
         </p>
 
         {% if error_message %}
@@ -48,14 +48,14 @@
                     </td>
                     <td>
                         {% if product %}
-                        <a href="{% url 'pathologist:patients_home' product.id %}" style="display: inline;">
+                        <a href="{% url 'pathologist:ppatients_home' product.id %}" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="product_id" value="{{ product.id }}" />
                                 <button type="submit" class="btn btn-danger btn-md">
                                     <span class="glyphicon glyphicon-trash"></span>&nbsp; Remove
                                 </button>
                             </a> {% endif %} {% if product %}
-                        <a href="{% url 'pathologist:patients_home' product.id %}" style="display: inline;">
+                        <a href="{% url 'pathologist:ppatients_home' product.id %}" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="product_id" value="{{ product.id }}" />
                                 <button type="submit" class="btn btn-primary btn-md">

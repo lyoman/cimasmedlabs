@@ -20,6 +20,7 @@
 </head>
 
 <body class="app">
+    <link rel="stylesheet" href="{% static 'css/special.css' %}">
     <div id="loader">
         <div class="spinner"></div>
     </div>
@@ -50,7 +51,7 @@
                                         </div>
                                     </div>
                                     <div class="peer peer-greed">
-                                        <h5 class="lh-1 mB-0 logo-text">Cimas MedLabs</h5>
+                                        <h3 class="lh-1 mB-0 logo-text">Cimas MedLabs</h3>
                                     </div>
                                 </div>
                             </a>
@@ -71,15 +72,15 @@
                             <span class="title">Login</span>
                         </a>
                     </li>
-                    <li class="nav-item {% block calender_active %}{% endblock %}">
+                    <!-- <li class="nav-item {% block calender_active %}{% endblock %}">
                         <a class="sidebar-link" href="#">
                             <span class="icon-holder">
                                         <i class="c-deep-orange-500 ti-calendar"></i> 
                                     </span>
                             <span class="title">Help</span>
                         </a>
-                    </li>
-                    <li class="nav-item {% block chat_active %}{% endblock %}">
+                    </li> -->
+                    <li class="nav-item {% block about_active %}{% endblock %}">
                         <a class="sidebar-link" href="{% url 'users:about' %}">
                             <span class="icon-holder">
                                         <i class="c-deep-purple-500 ti-comment-alt"></i> 
@@ -87,7 +88,7 @@
                             <span class="title">About Us</span>
                         </a>
                     </li>
-                    <li class="nav-item {% block charts_active %}{% endblock %}">
+                    <li class="nav-item {% block contact_active %}{% endblock %}">
                         <a class="sidebar-link" href="{% url 'users:contact' %}">
                             <span class="icon-holder">
                                         <i class="c-indigo-500 ti-bar-chart"></i> 

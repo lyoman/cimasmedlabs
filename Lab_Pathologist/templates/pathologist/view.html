@@ -18,7 +18,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="image form-group">
-                                                <a href="{% url 'pathologist:tests_home' pathologist.id %}">
+                                                <a href="{% url 'pathologist:samples_home' pathologist.id %}">
                                                     <img src="{% static 'imgs/blood.png' %}" class="img img-responsive">
                                                     <label class="pic-labels">Samples</label>
                                                 </a>
@@ -28,7 +28,7 @@
 
                                         <div class="col-md-6">
                                             <div class="image form-group">
-                                                <a href="{% url 'pathologist:tests_home' pathologist.id %}">
+                                                <a href="{% url 'pathologist:reports_home' pathologist.id %}">
                                                     <img src="{% static 'imgs/report.png' %}" class="img img-responsive">
                                                     <label class="pic-labels">Reports</label>
                                                 </a>
@@ -53,7 +53,7 @@
 
                                         <div class="col-md-6">
                                             <div class="image form-group">
-                                                <a href="{% url 'pathologist:tests_home' pathologist.id %}">
+                                                <a href="{% url 'pathologist:lab_home' pathologist.id %}">
                                                     <img src="{% static 'imgs/hospital.png' %}" class="img img-responsive">
                                                     <label class="pic-labels">Laboratory</label>
                                                 </a>
@@ -69,7 +69,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="image form-group">
-                                            <a href="{% url 'pathologist:patients_home' pathologist.id %}">
+                                            <a href="{% url 'pathologist:ppatients_home' pathologist.id %}">
                                                 <img src="{% static 'imgs/patient.png' %}" class="img img-responsive">
                                                 <label class="pic-labels">Patients</label>
                                             </a>
@@ -79,7 +79,7 @@
 
                                     <div class="col-md-6">
                                         <div class="image form-group">
-                                            <a href="{% url 'pathologist:tests_home' pathologist.id %}">
+                                            <a href="{% url 'pathologist:pdoctors_home' pathologist.id %}">
                                                 <img src="{% static 'imgs/doctor.png' %}" class="img img-responsive">
                                                 <label class="pic-labels">Doctor</label>
                                             </a>

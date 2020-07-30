@@ -15,7 +15,7 @@
         <p style="display:inline-block">
             <a type="submit" class="btn btn-lg btn-primary" href="{% url 'patient:specimen_home' patient.id %}">View All</a>
             <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'patient:add_specimen' patient.id %}">Add New</a>
-            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'patient:specimen_home' patient.id %}">View sent to Doctor</a>
+            <!-- <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'patient:specimen_home' patient.id %}">View sent to Doctor</a> -->
         </p>
 
         {% if error_message %}

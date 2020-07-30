@@ -75,15 +75,18 @@
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="sidebar-link" href="#">
+
+                    {% for pathologist in pathologist %}
+                    <li class="nav-item {% block samples_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'pathologist:samples_home' pathologist.id %}">
                             <span class="icon-holder">
                                     <i class="c-brown-500 ti-email"></i> 
                                 </span>
                             <span class="title">Samples</span></a>
                     </li>
-                    <li class="nav-item {% block medicine_active %}{% endblock %}">
-                        <a class="sidebar-link" href="{% url 'pathologist:pathologist_dashboard' %}">
+
+                    <li class="nav-item {% block report_active %}{% endblock %}">
+                        <a class="sidebar-link" href="{% url 'pathologist:reports_home' pathologist.id %}">
                             <span class="icon-holder">
                                         <i class="c-indigo-500 ti-share"></i> 
                                     </span>
@@ -93,14 +96,14 @@
 
 
                     <li class="nav-item {% block help_active %}{% endblock %}">
-                        <a class="sidebar-link" href="{% url 'pathologist:pathologist_dashboard' %}">
+                        <a class="sidebar-link" href="{% url 'pathologist:ppatients_home' pathologist.id %}">
                             <span class="icon-holder">
                                         <i class="c-indigo-500 ti-bar-chart"></i> 
                                     </span>
-                            <span class="title">Manage Patient</span>
+                            <span class="title">Manage Patients</span>
                         </a>
                     </li>
-
+                    {% endfor %}
                     <li class="nav-item {% block chat_active %}{% endblock %}">
                         <a class="sidebar-link" href="{% url 'users:about' %}">
                             <span class="icon-holder">
@@ -117,17 +120,6 @@
                             <span class="title">Contact Us</span>
                         </a>
                     </li>
-
-                    <li class="nav-item {% block profile_active %}{% endblock %}">
-                        <a class="sidebar-link" href="#">
-                            <span class="icon-holder">
-                                        <i class="c-indigo-500 ti-bar-chart"></i> 
-                                    </span>
-                            <span class="title">User Profile</span>
-                        </a>
-                    </li>
-
-
 
                     <li class="nav-item {% block developers_active %}{% endblock %}">
                         <a class="sidebar-link" href="{% url 'users:logout' %}">
@@ -153,8 +145,10 @@
                                 <i class="ti-menu" style="color: white;"></i>
                             </a>
                         </li>
+
+                        {% for pathologist in pathologist %}
                         <li class="dropdown">
-                            <a href="{% url 'pathologist:pathologist_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                            <a href="{% url 'pathologist:samples_home' pathologist.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-briefcase pR-10" style="color: white;"></i>
                                     <span class="fsz-sm fw-600 white" style="color: white;">Samples</span>
@@ -163,7 +157,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="{% url 'pathologist:pathologist_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                            <a href="{% url 'pathologist:specimen_home' pathologist.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-briefcase pR-10" style="color: white;"></i>
                                     <span class="fsz-sm fw-600 white" style="color: white;">Specimen Data</span>
@@ -172,7 +166,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="{% url 'pathologist:pathologist_dashboard' %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                            <a href="{% url 'pathologist:reports_home' pathologist.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-briefcase pR-10" style="color: white;"></i>
                                     <span class="fsz-sm fw-600 white" style="color: white;">Reports</span>
@@ -181,13 +175,14 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
+                            <a href="{% url 'pathologist:pdoctors_home' pathologist.id %}" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1">
                                 <div class="peer">
                                     <i class="ti-gift pR-10" style="color: white;"></i>
                                     <span class="fsz-sm fw-600 white" style="color: white;">Doctors</span>
                                 </div>
                             </a>
                         </li>
+                        {% endfor %}
                     </ul>
                     <li class="dropdown">
 

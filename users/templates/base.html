@@ -72,15 +72,15 @@
                             <span class="title">Login</span>
                         </a>
                     </li>
-                    <li class="nav-item {% block calender_active %}{% endblock %}">
+                    <!-- <li class="nav-item {% block calender_active %}{% endblock %}">
                         <a class="sidebar-link" href="#">
                             <span class="icon-holder">
                                         <i class="c-deep-orange-500 ti-calendar"></i> 
                                     </span>
                             <span class="title">Help</span>
                         </a>
-                    </li>
-                    <li class="nav-item {% block chat_active %}{% endblock %}">
+                    </li> -->
+                    <li class="nav-item {% block about_active %}{% endblock %}">
                         <a class="sidebar-link" href="{% url 'users:about' %}">
                             <span class="icon-holder">
                                         <i class="c-deep-purple-500 ti-comment-alt"></i> 
@@ -88,7 +88,7 @@
                             <span class="title">About Us</span>
                         </a>
                     </li>
-                    <li class="nav-item {% block charts_active %}{% endblock %}">
+                    <li class="nav-item {% block contact_active %}{% endblock %}">
                         <a class="sidebar-link" href="{% url 'users:contact' %}">
                             <span class="icon-holder">
                                         <i class="c-indigo-500 ti-bar-chart"></i> 

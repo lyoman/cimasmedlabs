@@ -1,0 +1,78 @@
+{% extends "tests_base.html" %} {% block title %}Reports Home{% endblock %} {% block report_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+<!--Start Contents-->
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> {{ message }}
+        </div>
+        {% endfor %} {% endif %} {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Refference</th>
+                    <th>Doctor</th>
+                    <th>Patient Code</th>
+                    <th>Hemoglobin</th>
+                    <th>Red Blood Cells</th>
+                    <th>Sex</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% if reportdata %} {% for product in reportdata %}
+                <tr>
+                    <td><a href="{% url 'pathologist:reports_detail' product.id %}">{{ product.reffnumber }}</a></td>
+                    <td>
+                        {{ product.specimendata.doctor }}
+                    </td>
+                    <td>
+                        P00{{ product.specimendata.patient.id }}
+                    </td>
+                    <td>
+                        {{ product.hemoglobin }}
+                    </td>
+                    <td>
+                        {{ product.RBC }}
+                    </td>
+
+                    <td>
+                        {{ product.specimendata.specimen.gender }}
+                    </td>
+
+                    <td>
+                        {{ product.specimendata.specimen.age }}
+                    </td>
+
+                    <td>
+                        {% if product %}
+                        <a href="{% url 'pathologist:reports_detail' product.id %}" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ product.id }}" />
+                                <button type="submit"  class="btn btn-primary btn-lg" style="color: white;background-color: #2196f3;">
+                                    <span class="glyphicon glyphicon-play"></span>&nbsp; View Details
+                                </button>
+                            </a> {% endif %}
+                    </td>
+                </tr>
+                {% endfor %} {% else %}
+                <h3>You don't have any Reports at the moment</h3>
+                {% endif %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<!--End Contents-->
+{% endblock %}

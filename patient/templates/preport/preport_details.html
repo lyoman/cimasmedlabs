@@ -1,0 +1,109 @@
+{% extends "preport_base.html" %} {% block title %}Report Details{% endblock %} {% block report_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+<!--Start Contents-->
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> {{ message }}
+        </div>
+        {% endfor %} {% endif %}
+
+        <h1 style="color: #2196f3; text-align: center;">CIMAS MEDLABS Report Details</h1>
+
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="font-size: larger;">Name</th>
+                    <th style="font-size: larger;">Details</th>
+                    <th style="font-size: larger;">Name</th>
+                    <th style="font-size: larger;">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if reportdata %}
+                <tr>
+                    <td>LAB NO: </td>
+                    <td>{{ reportdata.reffnumber }}</td>
+                    <td>Age</td>
+                    <td>{{ reportdata.specimendata.specimen.age }}</td>
+                </tr>
+
+                <tr>
+                    <td>Patient Name</td>
+                    <td>{{ reportdata.specimendata.specimen.patient_name }}</td>
+                    <td>Sex</td>
+                    <td>{{ reportdata.specimendata.specimen.gender }}</td>
+                </tr>
+
+                <tr>
+                    <td>Patient Code</td>
+                    <td>{{ reportdata.specimendata.patient.id }}</td>
+                    <td>Date Time</td>
+                    <td>{{ reportdata.timestamp }}</td>
+                </tr>
+
+                <tr>
+                    <td>Weight</td>
+                    <td>{{ reportdata.specimendata.weight }} Kgs</td>
+                    <td>Weight Details</td>
+                    <td>{{ reportdata.weight_result }}</td>
+                </tr>
+
+                <tr>
+                    <td>Temperature</td>
+                    <td>{{ reportdata.specimendata.temperature }} °C</td>
+                    <td>Doctor</td>
+                    <td>{{ reportdata.specimendata.doctor }}</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+
+                    <td style="font-size: x-large;text-align: center;color: #2196f3;padding-top: 5%;">
+                        <h1>HEMATOLOGY BLOOD TEST</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">Test Name</td>
+                    <td style="font-weight: bold;">Result</td>
+                    <td style="font-weight: bold;">Units</td>
+                    <td style="font-weight: bold;">Normal Range</td>
+                </tr>
+
+                <tr>
+                    <td>Hemoglobin</td>
+                    <td>{{ reportdata.hemoglobin }}</td>
+                    <td>g/dL</td>
+                    <td>11.0 - 15.0</td>
+                </tr>
+
+                <tr>
+                    <td>RBC</td>
+                    <td>{{ reportdata.RBC }} </td>
+                    <td>10^6/uL</td>
+                    <td>3.0 - 5.5</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <!-- <a href="#" style="display: inline;margin-left: 40%;">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ reportdata.id }}" />
+            <button type="submit" class="btn btn-primary btn-lg">
+                <span class="glyphicon glyphicon-save"></span>&nbsp; Download PDF
+            </button>
+        </a> -->
+    </div>
+</div>
+
+
+<!--End Contents-->
+{% endblock %}

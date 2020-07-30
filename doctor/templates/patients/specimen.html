@@ -1,4 +1,4 @@
-{% extends "patients_base.html" %} {% block title %}Specimens Home{% endblock %} {% block product_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+{% extends "dspecimen_base.html" %} {% block title %}Specimens Home{% endblock %} {% block specimen_active %}active{% endblock %} {% load staticfiles %} {% block body %}
 <!--Start Contents-->
 <div class="panel panel-default">
     <div class="panel-body">
@@ -14,8 +14,8 @@
         <!-- <h3>All Products</h3> -->
         <p style="display:inline-block">
             <a type="submit" class="btn btn-lg btn-primary" href="{% url 'doctor:specimen_home' doctor.id %}">View All</a>
-            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'doctor:specimen_home' doctor.id %}">View Under Tests</a>
-            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'doctor:specimen_home' doctor.id %}">With Completed Tests</a>
+            <!-- <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'doctor:specimen_home' doctor.id %}">View Under Tests</a>
+            <a type="submit" class="btn btn-lg btn-outline-primary" href="{% url 'doctor:specimen_home' doctor.id %}">With Completed Tests</a> -->
         </p>
 
         {% if error_message %}
@@ -27,7 +27,7 @@
                 <tr>
                     <th>Reff No.</th>
                     <th>Patient No.</th>
-                    <th>Specimen</th>
+                    <th>Gender</th>
                     <th>Date</th>
                     <th>Actions</th>
 
@@ -41,7 +41,7 @@
                         P00{{ product.patient.id }}
                     </td>
                     <td>
-                        {{ product.specimen.specimen_name }}
+                        {{ product.specimen.gender }}
                     </td>
                     <td>
                         {{ product.timestamp }}
@@ -51,15 +51,8 @@
                         <a href="{% url 'doctor:specimen_details' product.id %}" style="display: inline;">
                                 {% csrf_token %}
                                 <input type="hidden" name="product_id" value="{{ product.id }}" />
-                                <button type="submit" class="btn btn-info btn-lg">
+                                <button type="submit" class="btn btn-success btn-lg">
                                     <span class="glyphicon glyphicon-play"></span>&nbsp; View
-                                </button>
-                            </a> {% endif %} {% if product.pathologist == "no" %}
-                        <a href="{% url 'doctor:send_specimen' product.id %}" style="display: inline;">
-                                {% csrf_token %}
-                                <input type="hidden" name="product_id" value="{{ product.id }}" />
-                                <button type="submit" class="btn btn-primary btn-lg">
-                                    <span class="glyphicon glyphicon-edit"></span>&nbsp; Send to Pathologist
                                 </button>
                             </a> {% endif %} {% if product.pathologist == "yes" %}
                         <a href="#" style="display: inline;">

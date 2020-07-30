@@ -12,9 +12,9 @@ class DoctorModelAdmin(admin.ModelAdmin):
         model = Doctor
 
 class SpecimenDataModelAdmin(admin.ModelAdmin):
-    list_display 	    = ["id", "reff", "patient", "doctor", "specimen", "updated", "timestamp"]
+    list_display 	    = ["id", "reff", "patient", "doctor", "specimen", "temperature", "weight", "updated", "timestamp"]
     list_display_links  = ["updated", "doctor"]
-    # list_editable		= []
+    list_editable		= ["temperature", "weight"]
     list_filter			= ["patient"]
     search_fields		= ["reff"]
     class Meta:

@@ -8,7 +8,7 @@ from datetime import datetime
 
 dt = datetime.now()
 milliseconds = int(round(dt.timestamp() *1000))
-print(milliseconds)
+# print(milliseconds)
 
 # Create your models here.
 class Doctor(models.Model):
@@ -37,6 +37,9 @@ class SpecimenData(models.Model):
     reff          = models.CharField(max_length=200, blank=False, default = milliseconds)
     status        = models.CharField(max_length=200, blank=False, default="pending")
     pathologist   = models.CharField(max_length=200, blank=False, default = "no")
+    temperature   = models.CharField(max_length=200, blank=True, null=True)
+    weight        = models.CharField(max_length=200, blank=True, null=True)
+    daysent       = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated       = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp     = models.DateTimeField(auto_now=False, auto_now_add=True)
 

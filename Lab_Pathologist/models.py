@@ -1,23 +1,28 @@
-# from django.db import models
-# from django.utils import timezone
-# from django.contrib.auth.models import Permission, User
+from django.db import models
+from django.utils import timezone
+from users.models import User
+from doctor.models import SpecimenData
+from patient.models import Specimen
+from datetime import datetime
 
-# # Create your models here.
-# class LabPathologist(models.Model):
-# 	user        = models.ForeignKey(User, default=1, on_delete = models.CASCADE)
-# 	venue  		= models.CharField(max_length=500)
-# 	title       = models.CharField(max_length=500)
-# 	description = models.TextField(max_length=500, blank=True)
-# 	event_date  = models.DateField(null=True, blank=True)
-# 	event_time  = models.TimeField(null=True, blank=True)
-# 	link_url    = models.CharField(max_length=500, null=True, blank=True)
-# 	image       = models.ImageField(upload_to = 'all_events/', blank=True)
-# 	updated     = models.DateTimeField(auto_now=True, auto_now_add=False)
-# 	timestamp   = models.DateTimeField(auto_now=False, auto_now_add=True)
+dt = datetime.now()
+milliseconds = int(round(dt.timestamp() *1000))
+# print(milliseconds)
+
+class GeneratedReport(models.Model):
+    user          = models.ForeignKey(User, default=1, on_delete = models.CASCADE)
+    specimendata  = models.ForeignKey(SpecimenData, on_delete = models.CASCADE)
+    reffnumber    = models.CharField(max_length=200, blank=False, default = milliseconds)
+    test_name     = models.CharField(max_length=200, blank=False, default="Hematology Blood Test")
+    hemoglobin    = models.CharField(max_length=200, blank=False, null=False,)
+    RBC           = models.CharField(max_length=200, null=False, blank=False)
+    weight_result = models.CharField(max_length=200, null=False, blank=False)
+    updated       = models.DateTimeField(auto_now=True, auto_now_add=False)
+    timestamp     = models.DateTimeField(auto_now=False, auto_now_add=True)
 
 
-# 	def __str__(self):
-# 		return self.title + ' - ' + self.venue
+    def __str__(self):
+        return self.test_name
 
-# 	class Meta:
-# 		ordering = ["-timestamp", "-updated"]
+    class Meta:
+        ordering = ["-timestamp", "-updated"]

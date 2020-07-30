@@ -1,0 +1,74 @@
+{% extends "tests_base.html" %} {% block title %}CIMSA MedLab{% endblock %} {% block doctor_active %}active{% endblock %} {% load staticfiles %} {% block body %}
+<!--Start Contents-->
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> {{ message }}
+        </div>
+        {% endfor %} {% endif %}
+
+        <h1 style="color: #2196f3; text-align: center;">CIMAS MEDLABS: Hemoglobin Levels</h1>
+
+        {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="font-size: larger;">Age Group</th>
+                    <th style="font-size: larger;">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Newborns: </td>
+                    <td>17 to 22 gm/dL</td>
+                </tr>
+
+                <tr>
+                    <td>One (1) week of age: </td>
+                    <td>15 to 20 gm/dL</td>
+                </tr>
+
+                <tr>
+                    <td>One (1) month of age: </td>
+                    <td>11 to 15 gm/dL</td>
+                </tr>
+
+                <tr>
+                    <td>Children: </td>
+                    <td>11 to 13 gm/dL</td>
+                </tr>
+
+                <tr>
+                    <td> Adult males: </td>
+                    <td>14 to 18 gm/dL</td>
+                </tr>
+
+                <tr>
+                    <td>Adult women: </td>
+                    <td>12 to 16 gm/dL</td>
+                </tr>
+
+                <tr>
+                    <td>Men after middle age: </td>
+                    <td>12.4 to 14.9 gm/dL</td>
+                </tr>
+
+                <tr>
+                    <td>Women after middle age: </td>
+                    <td>11.7 to 13.8 gm/dL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!--End Contents-->
+{% endblock %}
